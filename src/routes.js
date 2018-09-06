@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import All from './screens/all';
-import Started from './screens/started';
 import Completed from './screens/completed';
 
 const routes = [
@@ -10,10 +8,12 @@ const routes = [
     path: "/",
     exact: true,
     main: () => All,
+    side: () => <h2 className="text-left">All Todos</h2>
   },
   {
     path: "/completed",
     main: () => Completed,
+    side: () => <h2 className="text-left">Completed Todos</h2>
   },
 ];
 
@@ -40,6 +40,17 @@ const Routes = () => (
             <Link to="/completed">Completed</Link>
           </li>
         </ul>
+
+        <div>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.side}
+          />
+        ))}
+        </div>
       </div>
 
       <div style={{ flex: 1, padding: "10px" }}>

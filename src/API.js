@@ -45,15 +45,14 @@ export const API = {
     return API.call(path, API.parameters('PUT', body));
   },
 
-  /*
   post: async (
-    path: string,
-    accessToken: AccessToken,
-    body: object | undefined,
-  ): Promise<Response> => {
-    return API.call(path, API.parameters('POST', accessToken, body));
+    path,
+    body,
+  )=> {
+    return API.call(path, API.parameters('POST', body));
   },
 
+  /*
   delete: async (
     path: string,
     accessToken: AccessToken,

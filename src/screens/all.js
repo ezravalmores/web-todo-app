@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { fetchAllTodosRequest, markTodoAsCompleteRequest } from '../actions/todoActions';
+import { 
+  fetchAllTodosRequest, 
+  markTodoAsCompleteRequest,
+  createTodoRequest,
+} from '../actions/todoActions';
 import { connect } from 'react-redux';
 import TodoList from './components/todoList';
+import NewTodoForm from './components/newTodoForm';
 
 const mapStateToProps = (state) => ({
   allTodos: state.todo.allTodos,
   isFetchingAllTodos: state.todo.isFetchingAllTodos,
+  isCreatingTodo: state.todo.isCreatingTodo,
 });
 
 const mapDispatchToProps = (dispatch) =>
@@ -14,6 +20,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       fetchAllTodosRequest,
       markTodoAsCompleteRequest,
+      createTodoRequest,
     },
     dispatch,
 );
@@ -27,12 +34,17 @@ class All extends Component {
   render() {
     return (
       <div id="all">
-        <h2 className="text-left">All Todos</h2>
         {!this.props.isFetchingAllTodos && this.props.allTodos && this.props.allTodos.length > 0 && (
-          <TodoList 
-            todos={this.props.allTodos} 
-            markTodoAsCompleted={this.props.markTodoAsCompleteRequest}
-          />
+          <div>
+            <NewTodoForm 
+              createTodoRequest={this.props.createTodoRequest}
+              isCreatingTodo={this.props.isCreatingTodo}
+            />
+            <TodoList 
+              todos={this.props.allTodos} 
+              markTodoAsCompleted={this.props.markTodoAsCompleteRequest}
+            />
+          </div>
         )}
 
         {this.props.isFetchingAllTodos && (

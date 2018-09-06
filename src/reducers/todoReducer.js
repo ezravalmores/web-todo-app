@@ -8,8 +8,8 @@ import {
 const initialState = {
   isFetchingAllTodos: false,
   isFetchingStartedTodos: false,
-  isFetchingCompletedTodos: false,
   isMarkingTodoAsCompleted: false,
+  isCreatingNewTodo: false,
   allTodos: [],
   startedTodos: [],
   completedTodos: [],

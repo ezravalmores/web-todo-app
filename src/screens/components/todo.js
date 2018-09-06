@@ -11,7 +11,7 @@ const Todo = ({ id, completed, title, markTodoAsCompleted }) => (
     
     {!completed && (
       <div className="actions">
-        <Button outline color="primary" size="sm" onClick={() => markTodoAsCompleted(id)}>Mark as read</Button>
+        <Button outline color="primary" size="sm" onClick={() => markTodoAsCompleted(id)}>Mark as complete</Button>
       </div>
     )}
 

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Todo from './todo';
 
-const TodoList = ({ todos, markTodoAsCompleted }) => (
+const TodoList = ({ todos }) => (
   <div>
     {todos.map((todo) => (
-      <Todo key={todo.id} {...todo} markTodoAsCompleted={markTodoAsCompleted} />
+      <Todo key={todo.id} {...todo} />
     ))}
   </div>
 )
@@ -18,7 +18,6 @@ TodoList.propTypes = {
       completed: PropTypes.bool.isRequired,
     }).isRequired
   ).isRequired,
-  markTodoAsCompleted: PropTypes.func,
 }
 
 export default TodoList;

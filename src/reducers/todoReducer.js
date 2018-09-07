@@ -1,18 +1,14 @@
 import { 
   FETCH_ALL_TODOS_STARTED,
   FETCH_ALL_TODOS_SUCCESS,
-  UPDATE_TODO_STARTED,
-  UPDATE_TODO_SUCCESS,
+  CREATE_TODO_STARTED,
+  CREATE_TODO_SUCCESS,
 } from '../actions/actionTypes';
 
 const initialState = {
   isFetchingAllTodos: false,
-  isFetchingStartedTodos: false,
-  isMarkingTodoAsCompleted: false,
   isCreatingNewTodo: false,
   allTodos: [],
-  startedTodos: [],
-  completedTodos: [],
 }
 
 export default (state = initialState, action) => {
@@ -28,15 +24,15 @@ export default (state = initialState, action) => {
         isFetchingAllTodos: false,
         allTodos: action.todos,
       }
-    case UPDATE_TODO_STARTED:
+    case CREATE_TODO_STARTED:
       return {
         ...state,
-        isMarkingTodoAsCompleted: true,
+        isCreatingNewTodo: true,
       }
-    case UPDATE_TODO_SUCCESS:
+    case CREATE_TODO_SUCCESS:
       return {
         ...state,
-        isMarkingTodoAsCompleted: false,
+        isCreatingNewTodo: false,
       }
     default:
       return state

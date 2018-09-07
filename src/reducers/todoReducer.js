@@ -3,6 +3,8 @@ import {
   FETCH_ALL_TODOS_SUCCESS,
   UPDATE_TODO_STARTED,
   UPDATE_TODO_SUCCESS,
+  CREATE_TODO_STARTED,
+  CREATE_TODO_SUCCESS,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -37,6 +39,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isMarkingTodoAsCompleted: false,
+      }
+    case CREATE_TODO_STARTED:
+      return {
+        ...state,
+        isCreatingNewTodo: true,
+      }
+    case CREATE_TODO_SUCCESS:
+      return {
+        ...state,
+        isCreatingNewTodo: false,
       }
     default:
       return state

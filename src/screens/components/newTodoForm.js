@@ -33,7 +33,7 @@ class NewTodoForm extends Component {
           placeholder={"input new todo text"}
         />
        <Button 
-         color="primary" 
+         color={this.props.isCreatingTodo ?  "secondary" : "primary"} 
          size="sm" 
          onClick={this.handleSubmit}
          disabled={this.props.isCreatingTodo}

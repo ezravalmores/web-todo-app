@@ -2,39 +2,33 @@ import React, { Component as ReactComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import {
-
-} from '../todosAction';
-import {
-  getCurrentTodoTabName,
-  getIsFetchingTodoDetails,
-} from '../todosSelector';
+  createTodoRequest,
+} from '../../actions/todoActions';
 
 const mapStateToProps = (state) => ({
+  isCreatingTodo: state.todo.isCreatingTodo,
 });
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
+      createTodoRequest,
     },
     dispatch,
   );
 
-// An HOC for todo cards, it can be use for
-// weekly, upcoming, completed, expired
-const HOCWrapper = (
+// Can be use in screens that has same 
+// properties and stuff :-)
+const HocContainerWrapper = (
   Component,
 ) =>
   class HOCComponent extends ReactComponent {
-    constructor(props) {
-      super(props);
-    }
-
     render() {
       return <Component {...this.props} />;
     }
   };
 
-export const withTodoCardsContainer = compose(
+export const HocContainer = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  HOCWrapper,
+  HocContainerWrapper,
 );

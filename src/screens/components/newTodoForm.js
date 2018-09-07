@@ -17,7 +17,10 @@ class NewTodoForm extends Component {
   }
 
   handleSubmit() {
-    this.props.createTodoRequest(this.state.text)
+    const title = this.state.text;
+    if(title && title.trim()) {
+      this.props.createTodoRequest(this.state.text)
+    }
   }
 
   render() {
@@ -38,7 +41,7 @@ class NewTodoForm extends Component {
          Save
       </Button>
       </div>
-	);
+	  );
   }
 }
 

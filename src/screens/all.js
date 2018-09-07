@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 import { 
   fetchAllTodosRequest, 
   markTodoAsCompleteRequest,
-  createTodoRequest,
+  //createTodoRequest,
 } from '../actions/todoActions';
 import { connect } from 'react-redux';
 import TodoList from './components/todoList';
 import NewTodoForm from './components/newTodoForm';
+import { HocContainer } from './components/hoc';
 
 const mapStateToProps = (state) => ({
   allTodos: state.todo.allTodos,
@@ -20,7 +21,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       fetchAllTodosRequest,
       markTodoAsCompleteRequest,
-      createTodoRequest,
+      // createTodoRequest,
     },
     dispatch,
 );
@@ -55,4 +56,7 @@ class All extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(All);
+export default compose(
+  HocContainer,
+  connect(mapStateToProps, mapDispatchToProps)
+)(All);

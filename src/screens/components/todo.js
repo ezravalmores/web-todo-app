@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from 'reactstrap';
 import check from '../../check.png'
 
-const Todo = ({ id, completed, title, markTodoAsCompleted }) => (
+const Todo = ({ completed, title }) => (
   <div className="todo">
     <div className="content">
         <div className="todo-text">{title}</div>
@@ -11,7 +11,7 @@ const Todo = ({ id, completed, title, markTodoAsCompleted }) => (
     
     {!completed && (
       <div className="actions">
-        <Button outline color="primary" size="sm" onClick={() => markTodoAsCompleted(id)}>Mark as complete</Button>
+        <Button outline color="primary" size="sm">Mark as complete</Button>
       </div>
     )}
 
@@ -27,7 +27,6 @@ Todo.propTypes = {
   id: PropTypes.string,
   completed: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-  markTodoAsCompleted: PropTypes.func,
 }
 
 export default Todo

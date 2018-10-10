@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators, compose } from 'redux';
+import { bindActionCreators } from 'redux';
 import { 
   fetchAllTodosRequest, 
-  markTodoAsCompleteRequest,
-  //createTodoRequest,
+  createTodoRequest,
 } from '../actions/todoActions';
 import { connect } from 'react-redux';
 import TodoList from './components/todoList';
@@ -20,8 +19,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       fetchAllTodosRequest,
-      markTodoAsCompleteRequest,
-      // createTodoRequest,
+      createTodoRequest,
     },
     dispatch,
 );
@@ -43,7 +41,6 @@ class All extends Component {
             />
             <TodoList 
               todos={this.props.allTodos} 
-              markTodoAsCompleted={this.props.markTodoAsCompleteRequest}
             />
           </div>
         )}
@@ -56,7 +53,4 @@ class All extends Component {
   }
 }
 
-export default compose(
-  HocContainer,
-  connect(mapStateToProps, mapDispatchToProps)
-)(All);
+export default connect(mapStateToProps, mapDispatchToProps)(All);

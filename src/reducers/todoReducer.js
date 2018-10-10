@@ -9,12 +9,8 @@ import {
 
 const initialState = {
   isFetchingAllTodos: false,
-  isFetchingStartedTodos: false,
-  isMarkingTodoAsCompleted: false,
   isCreatingNewTodo: false,
   allTodos: [],
-  startedTodos: [],
-  completedTodos: [],
 }
 
 export default (state = initialState, action) => {
@@ -30,15 +26,15 @@ export default (state = initialState, action) => {
         isFetchingAllTodos: false,
         allTodos: action.todos,
       }
-    case UPDATE_TODO_STARTED:
+    case CREATE_TODO_STARTED:
       return {
         ...state,
-        isMarkingTodoAsCompleted: true,
+        isCreatingNewTodo: true,
       }
-    case UPDATE_TODO_SUCCESS:
+    case CREATE_TODO_SUCCESS:
       return {
         ...state,
-        isMarkingTodoAsCompleted: false,
+        isCreatingNewTodo: false,
       }
     case CREATE_TODO_STARTED:
       return {

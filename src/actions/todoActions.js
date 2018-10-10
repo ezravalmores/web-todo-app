@@ -3,8 +3,6 @@ import { API } from '../API';
 import { 
   FETCH_ALL_TODOS_STARTED,
   FETCH_ALL_TODOS_SUCCESS,
-  UPDATE_TODO_STARTED,
-  UPDATE_TODO_SUCCESS,
   CREATE_TODO_STARTED,
   CREATE_TODO_SUCCESS
 } from './actionTypes';
@@ -19,18 +17,6 @@ function fetchAllTodosSuccess(todos) {
   return {
     type: FETCH_ALL_TODOS_SUCCESS,
     todos,
-  }
-}
-
-function updateTodo() {
-  return {
-    type: UPDATE_TODO_STARTED,
-  }
-}
-
-function updateTodoSuccess() {
-  return {
-    type: UPDATE_TODO_SUCCESS,
   }
 }
 
@@ -93,28 +79,5 @@ export function fetchAllTodosRequest() {
           dispatch(fetchAllTodosSuccess(json))
         })
         // We can handle failure here also and dispatch a failed action so the view will know
-    }
-  }
-
-  export function markTodoAsCompleteRequest(todoId) {
-    return function (dispatch) {
-
-      dispatch(updateTodo())
-
-      return API.put(`https://morning-anchorage-70233.herokuapp.com/todos/${todoId}`, {completed: true})
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          } else {
-            return new Error('Error');
-          }
-        })
-        .then(json => {
-          dispatch(updateTodoSuccess())
-
-          // Just fetch todos again in this workshop :-)
-          // But if you want you can just update the todo in store
-          dispatch(fetchAllTodosRequest())
-        })
     }
   }

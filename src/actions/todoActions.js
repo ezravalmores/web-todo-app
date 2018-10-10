@@ -69,7 +69,7 @@ export function createTodoRequest(title) {
   }
 }
 
-export function fetchAllTodosRequest(subreddit) {
+export function fetchAllTodosRequest() {
     // Thunk middleware will pass dispatch to the return function
     return function (dispatch) {
       // First dispatch: the app state is updated to inform

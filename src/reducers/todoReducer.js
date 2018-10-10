@@ -1,6 +1,8 @@
 import { 
   FETCH_ALL_TODOS_STARTED,
   FETCH_ALL_TODOS_SUCCESS,
+  UPDATE_TODO_STARTED,
+  UPDATE_TODO_SUCCESS,
   CREATE_TODO_STARTED,
   CREATE_TODO_SUCCESS,
 } from '../actions/actionTypes';
@@ -23,6 +25,16 @@ export default (state = initialState, action) => {
         ...state,
         isFetchingAllTodos: false,
         allTodos: action.todos,
+      }
+    case CREATE_TODO_STARTED:
+      return {
+        ...state,
+        isCreatingNewTodo: true,
+      }
+    case CREATE_TODO_SUCCESS:
+      return {
+        ...state,
+        isCreatingNewTodo: false,
       }
     case CREATE_TODO_STARTED:
       return {
